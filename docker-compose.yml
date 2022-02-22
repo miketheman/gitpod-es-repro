@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  elasticsearch:
+    image: elasticsearch:7.10.1
+    environment:
+      - xpack.security.enabled=false
+      - node.name=node-1
+      - cluster.initial_master_nodes=node-1
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+    ports:
+      - '9200:9200'
+      - '9300:9300'
